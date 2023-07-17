@@ -1,5 +1,5 @@
 {% set name = "django-followit" %}
-{% set version = "0.5.0" %}
+{% set version = "0.6.0" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/django-followit-{{ version }}.tar.gz
-  sha256: 857a079493bcb91b77bb278fb229379bfcdcd606a8755a7022cbca1d9cad86b8
+  sha256: 07a9ba15c85f5545c4da48bc63f74314a10265fdd3b123c990422d82bb8d5280
 
 build:
   number: 0
