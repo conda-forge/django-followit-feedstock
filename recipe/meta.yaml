@@ -1,7 +1,6 @@
 {% set name = "django-followit" %}
 {% set version = "0.6.0" %}
 
-
 package:
   name: {{ name|lower }}
   version: {{ version }}
@@ -11,17 +10,17 @@ source:
   sha256: 07a9ba15c85f5545c4da48bc63f74314a10265fdd3b123c990422d82bb8d5280
 
 build:
-  number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python >=3.8
   run:
-    - python >=3.6
-    - django >=1.11,<3.0
+    - python >=3.8
+    - django >=1.11
 
 test:
   source_files:
