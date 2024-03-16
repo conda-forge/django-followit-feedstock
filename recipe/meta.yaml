@@ -1,7 +1,6 @@
 {% set name = "django-followit" %}
 {% set version = "0.6.0" %}
 
-
 package:
   name: {{ name|lower }}
   version: {{ version }}
@@ -11,17 +10,20 @@ source:
   sha256: 07a9ba15c85f5545c4da48bc63f74314a10265fdd3b123c990422d82bb8d5280
 
 build:
-  number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 1
 
 requirements:
   host:
+    - python >=3.6,<3.9
+    - setuptools =33.1.1
     - pip
-    - python >=3.6
   run:
-    - python >=3.6
+    - python >=3.6,<3.9
     - django >=1.11,<3.0
+    - django-utils-six
+    - six
 
 test:
   source_files:
@@ -35,6 +37,10 @@ test:
     - python -c "from django.conf import settings; settings.configure(); import followit"
     - python -c "import importlib.util; assert importlib.util.find_spec('followit')"
     - python followit/tests/runtests.py
+    - pip check
+  requires:
+    - pip
+
 about:
   home: https://github.com/ASKBOT/django-followit
   summary: A Django application that allows users to follow django model objects
@@ -43,4 +49,5 @@ about:
 
 extra:
   recipe-maintainers:
+    - rxm7706
     - mxr-conda
